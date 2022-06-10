@@ -29,6 +29,7 @@ const ResourceMenu = () => {
 
   return (
     <Flex
+      display={{ base: 'none', lg: 'flex' }}
       zIndex="2"
       bgColor="grey.100"
       top="68px"

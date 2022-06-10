@@ -6,11 +6,11 @@ import designResourceIcon from 'assets/design_resource_icon.svg';
 import webInspirationSm from 'assets/web_inspiration_sm.svg';
 import designResourceSm from 'assets/design_resource_sm.svg';
 import logo from 'assets/logo.png';
-import menu from 'assets/menu.svg';
+
 import { motion, useViewportScroll } from 'framer-motion';
+import MenuDrawer from './MenuDrawer';
 
 const MotionImage = motion(Image);
-const MotionFlex = motion(Flex);
 
 const Menu = () => {
   const { scrollYProgress } = useViewportScroll();
@@ -52,6 +52,7 @@ const Menu = () => {
             src={webInspirationSm}
             alt="Web Inspiration"
             opacity={location.pathname === '/' ? 1 : 0.2}
+            transition="all .5s"
             _hover={{ opacity: 0.5 }}
           />
           <Image
@@ -60,6 +61,7 @@ const Menu = () => {
             src={webInspirationIcon}
             alt="Web Inspiration"
             opacity={location.pathname === '/' ? 1 : 0.2}
+            transition="all .5s"
             _hover={{ opacity: 0.5 }}
           />
         </RouterLink>
@@ -71,6 +73,7 @@ const Menu = () => {
             _hover={{ opacity: 0.5 }}
             src={designResourceSm}
             alt="design ResourceIcon"
+            transition="all .5s"
           />
           <Image
             display={{ base: 'none', lg: 'block' }}
@@ -79,10 +82,11 @@ const Menu = () => {
             _hover={{ opacity: 0.5 }}
             src={designResourceIcon}
             alt="design ResourceIcon"
+            transition="all .5s"
           />
         </RouterLink>
       </HStack>
-      <Image w={{ base: '40px', lg: '50px' }} src={menu} alt="menu" />
+      <MenuDrawer />
     </Flex>
   );
 };

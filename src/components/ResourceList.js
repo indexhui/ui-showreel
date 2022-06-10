@@ -6,6 +6,7 @@ const ResourceList = props => {
   return (
     <Flex
       justify="center"
+      // minH="500px"
       px={{ base: '20px', lg: '5%', xl: '100px' }}
       pt="40px"
       pb="60px"
