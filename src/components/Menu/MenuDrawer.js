@@ -45,6 +45,9 @@ const MenuDrawer = () => {
               <RouterLink onClick={onClose} to="/resource/web-tool">
                 前端工具
               </RouterLink>
+              <RouterLink onClick={onClose} to="/resource/portfolio">
+                Portfolio
+              </RouterLink>
               <RouterLink onClick={onClose} to="/resource/app-collection">
                 APP 靈感收集
               </RouterLink>

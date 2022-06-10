@@ -86,6 +86,14 @@ const ResourceMenu = () => {
                 APP 靈感收集
               </Text>
             </RouterLink>
+            <RouterLink to="/resource/portfolio">
+              <Text
+                fontSize="14px"
+                color={path === '/resource/portfolio' ? 'cyan.700' : 'grey.500'}
+              >
+                Portfolio
+              </Text>
+            </RouterLink>
           </HStack>
         </VStack>
         <VStack align="flex-start" justify="center" spacing="0">

@@ -1,8 +1,12 @@
 id,title,image,link,color,tech,design,tag,industry,type,author
+web18,BotBonnie,/images/webs/pochi,https://www.botbonnie.com/zh,#FF4B68_#43F1F6,,#graphicDesign#illustration,,chatbot,,
+web17,CryptoPochi,/images/webs/pochi,https://pochi.club/,#E9E9D1_#083C76,,#p5#interative#web3.0,,nft,,Che-Yu Wu
+web16,justfont,/images/webs/justfont,https://justfont.com/,#CAD9CE_#FCFCFC,,#reveal#graphicDesign ,,design,,justfont
+web15,版塊設計,/images/webs/blockstudio,https://blockstudio.tw/,#435676,,#graphicDesign #水平滑動#motion#pixi,,design,,版塊設計
 web01,永續x教育 線上互動展,/images/webs/web1,https://conference.parenting.com.tw/,#05083F_#8E833A,,#lottie,3d_react,edu,,磨人設計
-web02,2022實踐媒傳畢業展,/images/webs/web2,https://2022sccd.com/,#E7E7E5,,#ripple #webGL,jq_webGL_ripples,edu,,媒體傳達設計學系
+web02,2022實踐媒傳畢業展,/images/webs/web2,https://2022sccd.com/,#E7E7E5,,#ripple #webGL#jquery,jq_webGL_ripples,edu,,媒體傳達設計學系
 web03,relab,/images/webs/web3,https://relab.cc/,#000,,#fullpage,react_fullpage,design,,Relab
-web04,日式文化地圖,/images/webs/web4,https://yamato.katanansamurai.art/,#2E3746,,#mobileFirst,nft_web3.0_mobileFirst,culture,,katanansamurai
+web04,日式文化地圖,/images/webs/web4,https://yamato.katanansamurai.art/,#2E3746,,#mobileFirst#web3.0,nft_web3.0_mobileFirst,culture,,katanansamurai
 web05,簡訊設計SimpleInfo Design,/images/webs/web5,https://www.simpleinfo.cc/,#FBCB05,,#水平滑動 #svg動畫,design,design,,簡訊設計
 web06,sofasoda,/images/webs/web6,https://www.sofasoda.com/,#8038FB_#000,,#滑動換色,scroll,edu,,sofasoda
 web07,RAW ,/images/webs/web7,https://raw.com.tw/,#7E7DBF_#D9C395,,#GSAP ,webGL,restaurant,,版塊設計
@@ -10,5 +14,5 @@ web08,工二建築,/images/webs/web8,https://hiiarchitects.com,#ddd,,,webGL,arch
 web09,前進十四峰,/images/webs/web9,https://gonext14peaks.gamaniacheerup.org/,#0F0FE1_#FF001B,,,webGL,trip,,版塊設計
 web10,vespa,/images/webs/web10,https://www.vespastore.com.tw/,#6DCDB1,,,designSystem,"transportation",,25sprout
 web11,台北流行音樂中心,/images/webs/web11,https://tmc.taipei/,#fff,wordpress,#ripple,,exhibition,,
-web12,Simon Figma 課程,/images/webs/web12,https://www.uiux-figma.com/,#F7F0FF,webflow,#Webflow#nocode,webflow,,,
+web12,Simon Figma 課程,/images/webs/web12,https://www.uiux-figma.com/,#F7F0FF,webflow,#Webflow#nocode,webflow,,,Simon Lin
 web14,virsody,/images/webs/virsody,https://virsody.io/,#000_#00A3D7,,#neon,vue,exhibition,,黑洞創造
