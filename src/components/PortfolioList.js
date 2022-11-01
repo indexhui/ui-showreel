@@ -1,7 +1,7 @@
 import { Flex, Grid, GridItem } from '@chakra-ui/react';
-import ResourceCard from 'components/ResourceCard';
+import PortfolioCard from 'components/PortfolioCard';
 
-const ResourceList = props => {
+const PortfolioList = props => {
   const { data } = props;
   return (
     <Flex
@@ -22,7 +22,18 @@ const ResourceList = props => {
       >
         {data?.map((item, index) => (
           <GridItem key={index}>
-            <ResourceCard {...item} />
+            <PortfolioCard
+              image={
+                item.relatedUrl.openGraph?.image ||
+                item.relatedUrl.metaData?.image
+              }
+              title={
+                item.relatedUrl.openGraph?.title || item.relatedUrl.meta?.title
+              }
+              link={item.link}
+              content={item.relatedUrl.openGraph?.description}
+              metaDes={item.relatedUrl.meta?.description}
+            />
           </GridItem>
         ))}
       </Grid>
@@ -30,4 +41,4 @@ const ResourceList = props => {
   );
 };
 
-export default ResourceList;
+export default PortfolioList;

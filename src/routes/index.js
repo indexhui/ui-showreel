@@ -2,7 +2,14 @@ import { useLayoutEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
-import { InspirationPage, ResourcePage } from 'pages';
+import {
+  InspirationPage,
+  ResourcePage,
+  PortfolioPage,
+  WebsitePage,
+  Sanity,
+  DesignSystemPage,
+} from 'pages';
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -22,6 +29,10 @@ const Router = () => {
             <Route path=":content" element={<ResourcePage />} />
           </Route>
           <Route path="/" element={<InspirationPage />} />
+          <Route path="/sanity" element={<Sanity />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/website" element={<WebsitePage />} />
+          <Route path="/designSystem" element={<DesignSystemPage />} />
         </Routes>
       </Wrapper>
     </AnimatePresence>

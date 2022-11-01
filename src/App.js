@@ -1,3 +1,7 @@
+import '@fontsource/noto-sans-tc/400.css';
+import '@fontsource/noto-sans-tc/500.css';
+import '@fontsource/noto-sans-tc/700.css';
+
 import React from 'react';
 import { ChakraProvider, Flex, Image, Link } from '@chakra-ui/react';
 import { motion } from 'framer-motion';

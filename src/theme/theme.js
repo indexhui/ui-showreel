@@ -1,60 +1,59 @@
-import { extendTheme } from '@chakra-ui/react';
+import {
+  extendTheme,
+  withDefaultColorScheme,
+  withDefaultVariant,
+  theme as base,
+} from '@chakra-ui/react';
 import colors from 'theme/colors';
-// import Button from './components/button';
+import textStyles from 'theme/textStyles';
+import semanticTokens from 'theme/semanticTokens';
+import Button from './components/button';
+import Modal from './components/modal';
 
 const customTheme = {
-  initialColorMode: 'light',
-  useSystemColorMode: false,
-  fonts: {
-    heading: "'Montserrat', Sans-serif",
-    body: "'Montserrat', Sans-serif",
-  },
+  colors,
+  textStyles,
+  semanticTokens,
   styles: {
     global: {
       body: {
-        bg: '#F9F9F9',
+        background: 'bg-default',
       },
     },
   },
-  colors,
-  // colors: {
-  //   ...colors,
-  //   brand: {
-  //     500: '#3DB9FF',
-  //     600: '#186DD1',
-  //     700: '#0A2C54',
-  //   },
-  //   grass: '#61CE70',
-  // },
+  fonts: {
+    heading: `'Montserrat','Noto Sans TC','PingFang TC','Microsoft JhengHei',${base.fonts?.body}`,
+    body: `'Montserrat','Noto Sans TC','PingFang TC','Microsoft JhengHei',${base.fonts?.body}`,
+  },
   components: {
-    // Button,
-    Switch: {
-      baseStyle: {
-        track: {
-          _focus: {
-            boxShadow: 'none',
-          },
-        },
-      },
-    },
-    Link: {
-      baseStyle: {
-        _hover: {
-          textDecoration: 'none',
-          color: 'grey.500',
-        },
-        // _active: {
-        //   outline: '0px',
-        // },
-        _focus: {
-          outline: '0px',
-          boxShadow: 'unset',
-        },
-      },
-    },
+    Button,
+    Modal,
   },
+
 };
 
-const theme = extendTheme(customTheme);
+const theme = extendTheme(
+  customTheme,
+  withDefaultColorScheme({
+    colorScheme: 'blue',
+    components: ['Button'],
+  }),
+  withDefaultColorScheme({
+    colorScheme: 'red',
+    components: ['Slider'],
+  }),
+  withDefaultColorScheme({
+    colorScheme: 'orange',
+    components: ['Switch', 'Code'],
+  }),
+  withDefaultVariant({
+    variant: 'outline',
+    components: ['Input', 'NumberInput'],
+  }),
+  withDefaultVariant({
+    variant: 'outline',
+    components: ['filled'],
+  })
+);
 
 export default theme;
