@@ -9,31 +9,45 @@ import {
   HStack,
   Skeleton,
 } from '@chakra-ui/react';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import WebContext from 'store/WebContext';
+import useImageBuilder from 'hooks/useImageBuilder';
+
+const MotionFlex = motion(Flex);
 
 const DetailBar = props => {
   const { authors, color } = props;
 
   return (
-    <Flex w="100%" justify="space-between" pb="10px">
+    <MotionFlex
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      w="100%"
+      justify="space-between"
+      pb="10px"
+    >
       <HStack>
-        {color.map((color, index) => (
-          <Box
-            key={index + color}
-            w="16px"
-            h="16px"
-            bgColor={color}
-            border={color === '#fff' ? '1px solid #ccc' : 'none'}
-            rounded="full"
-          ></Box>
-        ))}
+        {color &&
+          color.map((color, index) => (
+            <Box
+              key={index + color}
+              w="16px"
+              h="16px"
+              bgColor={color}
+              border={color === '#fff' ? '1px solid #ccc' : 'none'}
+              rounded="full"
+            ></Box>
+          ))}
       </HStack>
-      {authors.map((author, index) => (
-        <Link key={author.name} href={author.name + index} isExternal>
-          <Text color="cyan.800">{author.name}</Text>
-        </Link>
-      ))}
-    </Flex>
+      {authors &&
+        authors.map((author, index) => (
+          <Link key={author.name} href={author.name + index} isExternal>
+            <Text color="cyan.800">{author.name}</Text>
+          </Link>
+        ))}
+    </MotionFlex>
   );
 };
 
@@ -56,16 +70,17 @@ const TagBar = props => {
 
 const WebsiteCard = props => {
   const { image, name, link, tag, colors } = props;
+  const { url } = useImageBuilder(image);
   const { isShowDetail, isShowTech } = useContext(WebContext);
 
   return (
-    <Flex w="100%" direction="column">
+    <MotionFlex w="100%" direction="column">
       <Link href={link} isExternal>
         <AspectRatio w="100%" ratio={14 / 9}>
           <Image
             fallback={<Skeleton />}
             rounded="md"
-            src={image}
+            src={url}
             alt={name}
             objectFit="cover"
           />
@@ -81,7 +96,7 @@ const WebsiteCard = props => {
       </Link>
       {isShowDetail && <DetailBar {...props} />}
       {isShowTech && <TagBar tags={tag} />}
-    </Flex>
+    </MotionFlex>
   );
 };
 

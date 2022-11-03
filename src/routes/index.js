@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 import {
+  HomePage,
   InspirationPage,
   ResourcePage,
   PortfolioPage,
@@ -25,14 +26,14 @@ const Router = () => {
     <AnimatePresence exitBeforeEnter>
       <Wrapper>
         <Routes location={location} key={location.pathname}>
-          <Route path="/resource" element={<ResourcePage />}>
+          {/* <Route path="/resource" element={<ResourcePage />}>
             <Route path=":content" element={<ResourcePage />} />
-          </Route>
-          <Route path="/" element={<InspirationPage />} />
-          <Route path="/sanity" element={<Sanity />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
+          </Route> */}
           <Route path="/website" element={<WebsitePage />} />
-          <Route path="/designSystem" element={<DesignSystemPage />} />
+          <Route path="/" element={<WebsitePage />} />
+          {/* <Route path="/sanity" element={<Sanity />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/designSystem" element={<DesignSystemPage />} /> */}
         </Routes>
       </Wrapper>
     </AnimatePresence>

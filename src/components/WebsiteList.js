@@ -1,15 +1,9 @@
 import { Flex, Grid, GridItem } from '@chakra-ui/react';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import WebsiteCard from 'components/WebsiteCard';
 
-import sanityClient from '../client.js';
-import imageUrlBuilder from '@sanity/image-url';
-
-const builder = imageUrlBuilder(sanityClient);
-
-function urlFor(source) {
-  return builder.image(source);
-}
-
+const MotionGridItem = motion(GridItem);
 const WebsiteList = props => {
   const { data } = props;
   return (
@@ -31,11 +25,20 @@ const WebsiteList = props => {
         }}
         gap={6}
       >
-        {data?.map((item, index) => (
-          <GridItem key={index}>
-            <WebsiteCard {...item} image={urlFor(item.image).url()} />
-          </GridItem>
-        ))}
+        <AnimatePresence>
+          {data?.map((item, index) => (
+            <MotionGridItem
+              key={item.link}
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <WebsiteCard {...item} image={item.image} />
+            </MotionGridItem>
+          ))}
+        </AnimatePresence>
       </Grid>
     </Flex>
   );

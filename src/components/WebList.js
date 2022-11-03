@@ -1,6 +1,9 @@
 import { Flex, Grid, GridItem } from '@chakra-ui/react';
 import WebCard from 'components/WebCard';
 
+import { motion, AnimatePresence } from 'framer-motion';
+
+const MotionGridItem = motion(GridItem);
 const WebList = props => {
   const { data } = props;
   return (
@@ -12,6 +15,7 @@ const WebList = props => {
       pb="20px"
     >
       <Grid
+        border="1px solid blue"
         px={{ base: '10px', lg: '10%', xl: '6%' }}
         w="100%"
         templateColumns={{
@@ -22,11 +26,21 @@ const WebList = props => {
         }}
         gap={6}
       >
-        {data?.map((item, index) => (
-          <GridItem key={index}>
-            <WebCard {...item} />
-          </GridItem>
-        ))}
+        <AnimatePresence>
+          {data?.map((item, index) => (
+            <MotionGridItem
+              border="1px solid red"
+              layout
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 5 }}
+            >
+              <WebCard {...item} />
+            </MotionGridItem>
+          ))}
+        </AnimatePresence>
       </Grid>
     </Flex>
   );

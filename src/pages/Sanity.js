@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Flex, Text, Image } from '@chakra-ui/react';
 import sanityClient from '../client.js';
 import imageUrlBuilder from '@sanity/image-url';
-
+import useImageBuilder from 'hooks/useImageBuilder';
 const builder = imageUrlBuilder(sanityClient);
 
 function urlFor(source) {
@@ -12,6 +12,7 @@ function urlFor(source) {
 
 const Card = props => {
   const { name, image } = props;
+  const { url } = useImageBuilder(image);
   return (
     <Flex
       w="160px"
@@ -22,7 +23,7 @@ const Card = props => {
     >
       <Text>{name || 'cardName'}</Text>
       {/* <Text>{image.asset.url}</Text> */}
-      <Image src={image} />
+      <Image src={url} />
     </Flex>
   );
 };
@@ -61,7 +62,7 @@ export function Sanity() {
             <Card
               key={index}
               name={item.name}
-              image={urlFor(item.image).url()}
+              image={item.image}
               // image={item.image}
             />
           ))}

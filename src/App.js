@@ -20,7 +20,7 @@ function App() {
       <ChakraProvider theme={theme}>
         <Menu />
         <Router />
-        <Flex w="100%" justify="center" pb="50px" overflow="hidden">
+        {/* <Flex w="100%" justify="center" pb="50px" overflow="hidden">
           <Link href="https://forms.gle/W9yVzBkGG3ADrTiG6" isExternal>
             <MotionImage
               initial={{ opacity: 0, x: 100 }}
@@ -32,7 +32,7 @@ function App() {
               alt="raise"
             />
           </Link>
-        </Flex>
+        </Flex> */}
       </ChakraProvider>
     </WebProvider>
   );

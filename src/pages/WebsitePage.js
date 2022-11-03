@@ -1,46 +1,75 @@
 import { useEffect, useState } from 'react';
 
-import { Flex } from '@chakra-ui/react';
-import sanityClient from '../client.js';
-import imageUrlBuilder from '@sanity/image-url';
+import {
+  Flex,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
+} from '@chakra-ui/react';
+
+import { ChevronDownIcon } from '@chakra-ui/icons';
 
 import Filter from 'components/Filter';
 import WebsiteList from 'components/WebsiteList';
-// import WebList from 'components/WebList';
+
+import { useResourceService } from 'service';
+
+const Panel = ({ industry, handleClick }) => {
+  return (
+    <Menu>
+      <MenuButton w="250px" as={Button} rightIcon={<ChevronDownIcon />}>
+        Actions {industry}
+      </MenuButton>
+      <MenuList>
+        <MenuItem onClick={() => handleClick(null)}>all</MenuItem>
+        <MenuItem onClick={() => handleClick('design/art')}>
+          design/art
+        </MenuItem>
+        <MenuItem>Create a Copy</MenuItem>
+        <MenuItem>Mark as Draft</MenuItem>
+        <MenuItem>Delete</MenuItem>
+        <MenuItem>Attend a Workshop</MenuItem>
+      </MenuList>
+    </Menu>
+  );
+};
 
 export function WebsitePage() {
-  const [data, setData] = useState(null);
-
-  const fetchContent = `*[_type == "website" && $keyword in tag[] -> name]{
-      name,
-      link,
-      tag[]->{name},
-      authors[]->{name,link},
-      color,
-      image{
-        asset->{
-          _id,
-          url
-        },
-      },
-    }
-    `;
-  const params = {
-    keyword: 'wordpress',
-  };
+  const [data, setData] = useState(null); //data
+  const [industry, setIndustry] = useState(null); //data
+  const { getWebsiteResource, getWebsiteResourceFilter } = useResourceService();
 
   useEffect(() => {
-    sanityClient
-      .fetch(fetchContent, params)
-      .then(data => setData(data))
-      .catch(console.error);
+    const fetchData = async () => {
+      const data = await getWebsiteResource();
+      setData(data);
+    };
+    fetchData();
   }, []);
 
-  console.log(data);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (industry) {
+        const data = await getWebsiteResourceFilter(industry);
+        setData(data);
+      } else {
+        const data = await getWebsiteResource();
+        setData(data);
+      }
+    };
+    fetchData();
+  }, [industry]);
+
+  const handleClickMenu = item => {
+    setIndustry(item);
+  };
 
   return (
     <Flex w="100%" direction="column">
-      <Filter />
+      <Filter industry={industry} handleClickMenu={handleClickMenu} />
+      {/* <Panel industry={industry} handleClick={handleClickMenu} /> */}
       {data && <WebsiteList data={data} />}
     </Flex>
   );
