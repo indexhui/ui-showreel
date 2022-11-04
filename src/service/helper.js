@@ -10,13 +10,13 @@ export async function sanityFetcher(type, content) {
 }
 
 export async function sanityParamsFetcher(type, content, keyword) {
-  const method = `*[_type == "${type}" && ($keyword match industry[] -> name  )] | order(priority desc, _updatedAt desc) {
+  const method = `*[_type == "${type}" && ($keyword in industry[] -> name  )] | order(priority desc, _updatedAt desc) {
       ${content}
     }
     `;
-  const params = { keyword: [keyword] };
+  const params = { keyword: keyword };
   const data = await sanityClient.fetch(method, params);
-
+  // const data = await sanityClient.fetch(method);
   return data;
 }
 
