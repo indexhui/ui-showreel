@@ -30,7 +30,7 @@ const Router = () => {
             <Route path=":content" element={<ResourcePage />} />
           </Route> */}
           <Route path="/website" element={<WebsitePage />} />
-          <Route path="/" element={<WebsitePage />} />
+          <Route path="/" element={<HomePage />} />
           {/* <Route path="/sanity" element={<Sanity />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/designSystem" element={<DesignSystemPage />} /> */}

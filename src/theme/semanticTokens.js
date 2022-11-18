@@ -1,7 +1,7 @@
 const tokens = {
   colors: {
     light: {
-      'bg-default': 'gray.100',
+      'bg-default': 'gray.50',
       'fg-default': 'white',
       'btn-primary-bg': 'blue.500',
       'btn-primary-hover-bg': 'blue.600',

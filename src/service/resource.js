@@ -1,4 +1,8 @@
-import { sanityFetcher, sanityParamsFetcher } from './helper';
+import {
+  sanityPureFetcher,
+  sanityFetcher,
+  sanityParamsFetcher,
+} from './helper';
 
 const webSiteContent = `name,
       link,
@@ -15,6 +19,9 @@ const webSiteContent = `name,
 
 export function useResourceService() {
   return {
+    getResource: async method => {
+      return sanityPureFetcher(method);
+    },
     /**
      * Get all users
      * @method getWebsiteResource

@@ -5,7 +5,7 @@ import { Flex, Image, HStack, Text } from '@chakra-ui/react';
 // import designResourceIcon from 'assets/design_resource_icon.svg';
 // import webInspirationSm from 'assets/web_inspiration_sm.svg';
 // import designResourceSm from 'assets/design_resource_sm.svg';
-import logo from 'assets/logo.png';
+import logo from 'assets/logo.svg';
 import useScrollDirection from 'hooks/useScrollDirection';
 
 import { motion, useViewportScroll } from 'framer-motion';
@@ -35,19 +35,13 @@ const Menu = () => {
       bg="grey.100"
       justify="space-between"
       align="center"
-      borderBottom="1px solid #ccc"
       px={{ base: '15px', lg: '100px' }}
-      bgColor="gray.100"
+      bgColor="white"
       transitionDuration="350ms"
       transitionTimingFunction="cubic-bezier(0.4, 0, 0.2, 1)"
     >
-      <Flex w="50px">
-        <MotionImage
-          src={logo}
-          alt="web inspiration"
-          style={{ rotate: degree }}
-          transition={{ type: 'tween' }}
-        />
+      <Flex w="170px">
+        <Image src={logo} />
       </Flex>
       <HStack spacing="20px">
         <RouterLink

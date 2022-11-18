@@ -1,5 +1,14 @@
 import sanityClient from 'client.js';
 
+export async function sanityPureFetcher(method) {
+  // const method = `*[_type == "${type}"] | order(_createdAt desc){
+  //     ${content}
+  //   }
+  //   `;
+  const data = await sanityClient.fetch(method);
+  return data;
+}
+
 export async function sanityFetcher(type, content) {
   const method = `*[_type == "${type}"] | order(_createdAt desc){
       ${content}
@@ -10,13 +19,22 @@ export async function sanityFetcher(type, content) {
 }
 
 export async function sanityParamsFetcher(type, content, keyword) {
-  const method = `*[_type == "${type}" && ($keyword in industry[] -> name  )] | order(priority desc, _updatedAt desc) {
+  const method = `*[_type == "${type}" && ($keyword in industry[] -> name )] | order(priority desc, _updatedAt desc) {
       ${content}
     }
     `;
   const params = { keyword: keyword };
   const data = await sanityClient.fetch(method, params);
   // const data = await sanityClient.fetch(method);
+  return data;
+}
+
+export async function sanityParamsFetcher2(type, content, keyword) {
+  const method = `*[_type == "${type}" && ("${keyword}" in industry[] -> name || "nft" in  industry[] -> name )] | order(priority desc, _updatedAt desc) {
+      ${content}
+    }
+    `;
+  const data = await sanityClient.fetch(method);
   return data;
 }
 

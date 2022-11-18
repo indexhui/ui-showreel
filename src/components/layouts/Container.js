@@ -5,7 +5,7 @@ export function Container(props) {
   return (
     <Flex w="100%" px="20px" bgColor={bgColor} justify="center">
       <Flex
-        w={{ base: '100%', lg: '90%' }}
+        w={{ base: '100%', lg: '80%' }}
         // maxW="1080px"
         direction="column"
         align="center"
