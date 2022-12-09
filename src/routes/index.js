@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 
 import {
   HomePage,
+  BookPage,
   InspirationPage,
   ResourcePage,
   PortfolioPage,
@@ -30,6 +31,7 @@ const Router = () => {
             <Route path=":content" element={<ResourcePage />} />
           </Route>
           <Route path="/website" element={<WebsitePage />} />
+          <Route path="/book" element={<BookPage />} />
           {/* <Route path="/resource" element={<ResourcePage />} /> */}
           <Route path="/" element={<HomePage />} />
           {/* <Route path="/sanity" element={<Sanity />} />

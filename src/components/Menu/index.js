@@ -67,6 +67,14 @@ const Menu = () => {
               UIUX 學習資源
             </Text>
           </RouterLink>
+          <RouterLink to="/book">
+            <Text
+              color={location.pathname === '/book' ? 'gray.700' : 'gray.500'}
+              fontWeight={location.pathname === '/book' ? '500' : '300'}
+            >
+              書單推薦
+            </Text>
+          </RouterLink>
         </HStack>
       </Flex>
       <Flex as={RouterLink} to="/" w="170px">

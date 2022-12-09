@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 import {
   Flex,
   Text,
@@ -11,11 +9,7 @@ import {
   Skeleton,
   Link,
 } from '@chakra-ui/react';
-
-import { useResourceService } from 'service';
 import useImageBuilder from 'hooks/useImageBuilder';
-
-import { Container } from 'components/layouts';
 
 const BookCard = props => {
   const { image, name, tag, description, recommend, authors, link } = props;
@@ -100,53 +94,4 @@ const BookCard = props => {
   );
 };
 
-const BookSection = () => {
-  const [data, setData] = useState([]);
-  const { getBook } = useResourceService();
-
-  const type = 'book';
-  const content = `name,link,description,recommend,tag[]->{name},authors[]->{name,link,image},image{
-        asset->{
-          _id,
-          url
-        },
-      }`;
-  const method = `*[_type == "${type}"] | order(_createdAt desc)[0..2]{
-      ${content}
-    }
-    `;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getBook(method);
-      setData(data);
-    };
-    fetchData();
-  }, []);
-
-  return (
-    <Container
-      bgColor="gray.100"
-      pt={{ base: '24px', lg: '48px' }}
-      pb={{ base: '16px', lg: '24px' }}
-      align="flex-start"
-    >
-      <Text textStyle="heading2">書單推薦</Text>
-      <Text textStyle="text2">
-        你是剛對 UIUX 產生興趣的夥伴嗎? 想從書中學習嗎? 從這邊的推薦挑選一本吧 ~
-      </Text>
-      <SimpleGrid
-        w="100%"
-        columns={{ base: 1, lg: 3 }}
-        spacing="32px"
-        pt="12px"
-      >
-        {data.map(item => (
-          <BookCard key={item.name} {...item} />
-        ))}
-      </SimpleGrid>
-    </Container>
-  );
-};
-
-export default BookSection;
+export default BookCard;
