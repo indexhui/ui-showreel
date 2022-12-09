@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import {
   Flex,
   Text,
@@ -6,14 +8,22 @@ import {
   SimpleGrid,
   Image,
   Avatar,
+  Skeleton,
+  Link,
 } from '@chakra-ui/react';
+
+import { useResourceService } from 'service';
+import useImageBuilder from 'hooks/useImageBuilder';
 
 import { Container } from 'components/layouts';
 
 import book01 from 'assets/demo/book01.jpg';
 import read from 'assets/demo/read.jpg';
 
-const BookCard = () => {
+const BookCard = props => {
+  const { image, name, tag, description, recommend, authors, link } = props;
+  const { url } = useImageBuilder(image);
+  const { url: avatar } = useImageBuilder(authors[0].image);
   return (
     <Flex
       bgColor="white"
@@ -25,65 +35,121 @@ const BookCard = () => {
       direction="column"
     >
       <Flex>
-        <Image rounded="sm" src={book01} />
+        <Image
+          w="120px"
+          h="160px"
+          objectFit="cover"
+          fallback={<Skeleton />}
+          rounded="sm"
+          src={url}
+          alt={name}
+        />
         <VStack pl="12px" align="flex-start">
-          <Text textStyle="text1">峰值體驗</Text>
-          <Text textStyle="text2">
-            洞察隱而未知的需求，掌握關鍵時刻影響顧客決策
+          <Text textStyle="text1" color="gray.900">
+            {name}
+          </Text>
+          <Text textStyle="text2" noOfLines={3}>
+            {description}
           </Text>
         </VStack>
       </Flex>
-      <HStack py="10px" borderBottom="1px solid" borderColor="gray.300">
-        <Flex
-          textStyle="text3"
-          px="10px"
-          bgColor="#E2EDF9"
-          color="blue.600"
-          rounded="full"
-        >
-          個人成長
-        </Flex>
-        <Flex
-          textStyle="text3"
-          px="10px"
-          bgColor="orange.200"
-          color="orange.600"
-          rounded="full"
-        >
-          職涯
-        </Flex>
-      </HStack>
-      <VStack align="flex-start" spacing="5px" pt="8px">
-        {/* <Text textStyle="text3">誰來推薦這本</Text> */}
-        <Text textStyle="text3" color="gray.600">
-          《螢幕陷阱》提醒消費者別落入遍佈滿地的認知偏誤坑洞；《峰值體驗》則是從企業視角出發，認為體驗設計就是讓消費者自願又舒適地走入坑洞。
+      {tag && (
+        <HStack py="10px" borderBottom="1px solid" borderColor="gray.300">
+          {tag.map(item => (
+            <Flex
+              key={item.name}
+              textStyle="text3"
+              px="10px"
+              bgColor="gray.200"
+              color="gray.600"
+              rounded="full"
+            >
+              {item.name}
+            </Flex>
+          ))}
+        </HStack>
+      )}
+
+      <Flex
+        h="100%"
+        direction="column"
+        align="flex-start"
+        spacing="5px"
+        pt="8px"
+      >
+        <Text textStyle="text3" color="gray.500">
+          推薦與書評
         </Text>
-        <Flex w="100%" justify="space-between" align="center">
-          <HStack>
-            <Avatar w="32px" h="32px" src={read} />
-            <Text>read_and_reframe</Text>
-          </HStack>
-          <Text color="blue.600">看完整書評</Text>
+        <Flex flex="1">
+          <Text textStyle="text2" color="gray.600">
+            {recommend}
+          </Text>
         </Flex>
-      </VStack>
+        <Flex w="100%" justify="space-between" align="center">
+          {authors.map(item => (
+            <HStack key={item.name}>
+              <Avatar w="32px" h="32px" src={avatar} />
+              <Text>{item.name}</Text>
+            </HStack>
+          ))}
+          {link && (
+            <Link href={link}>
+              <Text color="blue.500">看完整書評</Text>
+            </Link>
+          )}
+        </Flex>
+      </Flex>
     </Flex>
   );
 };
 
 const BookSection = () => {
+  const [data, setData] = useState([]);
+  const { getBook } = useResourceService();
+
+  const type = 'book';
+  const content = `name,link,description,recommend,tag[]->{name},authors[]->{name,link,image},image{
+        asset->{
+          _id,
+          url
+        },
+      }`;
+  const method = `*[_type == "${type}"] | order(_createdAt desc)[0..2]{
+      ${content}
+    }
+    `;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getBook(method);
+      setData(data);
+    };
+    fetchData();
+  }, []);
+
+  console.log('book', data);
+
   return (
     <Container bgColor="gray.100" py="40px" align="flex-start">
       <Text textStyle="heading2">書單推薦</Text>
       <Text textStyle="text2">
-        你是剛對 UIUX 產生興趣的夥伴嗎?
-        可以跟著指引參考自己適合的學習資源與方法!
+        你是剛對 UIUX 產生興趣的夥伴嗎? 想從書中學習嗎? 從這邊的推薦挑選一本吧 ~
       </Text>
-      <SimpleGrid w="100%" columns={3} spacing="32px" pt="12px">
+      <SimpleGrid
+        w="100%"
+        columns={{ base: 1, lg: 3 }}
+        spacing="32px"
+        pt="12px"
+      >
+        {data.map(item => (
+          <BookCard key={item.name} {...item} />
+        ))}
+        {/* <BookCard />
         <BookCard />
-        <BookCard />
-        <BookCard />
+        <BookCard /> */}
       </SimpleGrid>
     </Container>
   );
 };
+
 export default BookSection;

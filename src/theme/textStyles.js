@@ -18,7 +18,7 @@ const textStyles = {
     letterSpacing: '.05em',
   },
   text1: {
-    fontSize: { base: '20px', lg: '18px' },
+    fontSize: { base: '20px', lg: '22px' },
     lineHeight: '1.6',
     fontWeight: 400,
     letterSpacing: '.05em',

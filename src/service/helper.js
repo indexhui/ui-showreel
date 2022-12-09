@@ -9,6 +9,15 @@ export async function sanityPureFetcher(method) {
   return data;
 }
 
+export async function methodFetcher(method) {
+  // const method = `*[_type == "${type}"] | order(_createdAt desc){
+  //     ${content}
+  //   }
+  //   `;
+  const data = await sanityClient.fetch(method);
+  return data;
+}
+
 export async function sanityFetcher(type, content) {
   const method = `*[_type == "${type}"] | order(_createdAt desc){
       ${content}

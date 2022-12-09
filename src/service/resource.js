@@ -1,4 +1,5 @@
 import {
+  methodFetcher,
   sanityPureFetcher,
   sanityFetcher,
   sanityParamsFetcher,
@@ -37,6 +38,10 @@ export function useResourceService() {
 
     getPortfolio: async () => {
       return sanityFetcher('portfolio', 'name,title,relatedUrl,link');
+    },
+
+    getBook: async method => {
+      return methodFetcher(method);
     },
   };
 }
