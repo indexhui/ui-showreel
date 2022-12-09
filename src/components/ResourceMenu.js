@@ -23,7 +23,7 @@ const ResourceMenu = () => {
   const matchResource = useMatch('/resource');
   useEffect(() => {
     if (matchResource) {
-      navigate('/resource/web-collection', { replace: true });
+      navigate('/resource/ig-collection', { replace: true });
     }
   }, [matchResource, navigate]);
 

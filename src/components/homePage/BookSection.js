@@ -130,7 +130,12 @@ const BookSection = () => {
   console.log('book', data);
 
   return (
-    <Container bgColor="gray.100" py="40px" align="flex-start">
+    <Container
+      bgColor="gray.100"
+      pt={{ base: '24px', lg: '48px' }}
+      pb={{ base: '16px', lg: '24px' }}
+      align="flex-start"
+    >
       <Text textStyle="heading2">書單推薦</Text>
       <Text textStyle="text2">
         你是剛對 UIUX 產生興趣的夥伴嗎? 想從書中學習嗎? 從這邊的推薦挑選一本吧 ~
@@ -144,9 +149,6 @@ const BookSection = () => {
         {data.map(item => (
           <BookCard key={item.name} {...item} />
         ))}
-        {/* <BookCard />
-        <BookCard />
-        <BookCard /> */}
       </SimpleGrid>
     </Container>
   );

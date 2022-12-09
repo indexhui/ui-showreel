@@ -8,11 +8,11 @@ const WebsiteList = props => {
   const { data } = props;
   return (
     <Flex
+      bgColor="gray.100"
       justify="center"
-      minH="500px"
       px={{ base: '20px', lg: '5%', xl: '100px' }}
-      pt="40px"
       pb="20px"
+      pt="48px"
     >
       <Grid
         px={{ base: '10px', lg: '10%', xl: '6%' }}

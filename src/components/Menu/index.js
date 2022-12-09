@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Flex, Image, HStack, Text } from '@chakra-ui/react';
-// import webInspirationIcon from 'assets/web_inspiration_icon.svg';
-// import designResourceIcon from 'assets/design_resource_icon.svg';
-// import webInspirationSm from 'assets/web_inspiration_sm.svg';
-// import designResourceSm from 'assets/design_resource_sm.svg';
+
 import logo from 'assets/logo.svg';
 import useScrollDirection from 'hooks/useScrollDirection';
 
@@ -40,20 +37,52 @@ const Menu = () => {
       transitionDuration="350ms"
       transitionTimingFunction="cubic-bezier(0.4, 0, 0.2, 1)"
     >
-      <Flex w="170px">
+      <Flex
+        justify="center"
+        position="absolute"
+        w="500px"
+        margin="0 auto"
+        left="0"
+        right="0"
+      >
+        <HStack display={{ base: 'none', lg: 'flex' }} spacing="20px">
+          <RouterLink
+            h={location.pathname === 'website' ? '27px' : '20px'}
+            to="/website"
+          >
+            <Text
+              color={location.pathname === '/website' ? 'gray.700' : 'gray.500'}
+              fontWeight={location.pathname === '/website' ? '400' : '300'}
+            >
+              網頁靈感收集
+            </Text>
+          </RouterLink>
+          <RouterLink to="/resource">
+            <Text
+              color={
+                location.pathname === '/resource' ? 'gray.700' : 'gray.500'
+              }
+              fontWeight={location.pathname === '/resource' ? '500' : '300'}
+            >
+              UIUX 學習資源
+            </Text>
+          </RouterLink>
+        </HStack>
+      </Flex>
+      <Flex as={RouterLink} to="/" w="170px">
         <Image src={logo} />
       </Flex>
-      <HStack spacing="20px">
+      {/* <HStack display={{ base: 'none', lg: 'flex' }} spacing="20px">
         <RouterLink
           h={location.pathname === 'website' ? '27px' : '20px'}
           to="/website"
         >
           <Text
             fontSize={location.pathname === '/website' ? '18px' : '18px'}
-            color={location.pathname === '/website' ? 'gray.700' : 'gray.400'}
+            color={location.pathname === '/website' ? 'gray.700' : 'gray.500'}
             fontWeight={location.pathname === '/website' ? '400' : '300'}
           >
-            網頁收集
+            網頁靈感收集
           </Text>
         </RouterLink>
         <RouterLink to="/website">
@@ -62,60 +91,11 @@ const Menu = () => {
             color={location.pathname === '/ui' ? 'gray.700' : 'gray.500'}
             fontWeight={location.pathname === '/ui' ? '500' : '300'}
           >
-            UI 學習資源
+            UIUX 學習資源
           </Text>
         </RouterLink>
-        <RouterLink to="/website">
-          <Text
-            fontSize={location.pathname === '/ui' ? '20px' : '18px'}
-            color={location.pathname === '/ui' ? 'blue.500' : 'gray.500'}
-            fontWeight={location.pathname === '/ui' ? '500' : '300'}
-          >
-            UX 學習資源
-          </Text>
-        </RouterLink>
-        {/* <RouterLink to="/">
-          <Image
-            display={{ base: 'block', lg: 'none' }}
-            h={location.pathname === '/' ? '24px' : '20px'}
-            src={webInspirationSm}
-            alt="Web Inspiration"
-            opacity={location.pathname === '/' ? 1 : 0.2}
-            transition="all .5s"
-            _hover={{ opacity: 0.5 }}
-          />
-          <Image
-            display={{ base: 'none', lg: 'block' }}
-            h={location.pathname === '/' ? '27px' : '20px'}
-            src={webInspirationIcon}
-            alt="Web Inspiration"
-            opacity={location.pathname === '/' ? 1 : 0.2}
-            transition="all .5s"
-            _hover={{ opacity: 0.5 }}
-          />
-        </RouterLink> */}
-        {/* <RouterLink to="/resource">
-          <Image
-            display={{ base: 'block', lg: 'none' }}
-            h={isMatchResource ? '27px' : '20px'}
-            opacity={isMatchResource ? 1 : 0.2}
-            _hover={{ opacity: 0.5 }}
-            src={designResourceSm}
-            alt="design ResourceIcon"
-            transition="all .5s"
-          />
-          <Image
-            display={{ base: 'none', lg: 'block' }}
-            h={isMatchResource ? '27px' : '20px'}
-            opacity={isMatchResource ? 1 : 0.2}
-            _hover={{ opacity: 0.5 }}
-            src={designResourceIcon}
-            alt="design ResourceIcon"
-            transition="all .5s"
-          />
-        </RouterLink> */}
-      </HStack>
-      <MenuDrawer />
+      </HStack> */}
+      {/* <MenuDrawer /> */}
     </Flex>
   );
 };

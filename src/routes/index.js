@@ -26,10 +26,11 @@ const Router = () => {
     <AnimatePresence exitBeforeEnter>
       <Wrapper>
         <Routes location={location} key={location.pathname}>
-          {/* <Route path="/resource" element={<ResourcePage />}>
+          <Route path="/resource" element={<ResourcePage />}>
             <Route path=":content" element={<ResourcePage />} />
-          </Route> */}
+          </Route>
           <Route path="/website" element={<WebsitePage />} />
+          {/* <Route path="/resource" element={<ResourcePage />} /> */}
           <Route path="/" element={<HomePage />} />
           {/* <Route path="/sanity" element={<Sanity />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
