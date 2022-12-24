@@ -76,7 +76,6 @@ const Filter = ({ industry, handleClickMenu }) => {
 
   return (
     <>
-      {/* <FilterDrawer /> */}
       <Flex
         display={{ base: 'none', lg: 'flex' }}
         zIndex="1"
@@ -87,25 +86,14 @@ const Filter = ({ industry, handleClickMenu }) => {
         w="100%"
         h="55px"
         px="100px"
-        justify="space-between"
+        justify="center"
       >
-        <Flex align="center" flex="1">
-          <HStack
-            mr="32px"
-            h="55px"
-            borderLeft="1px solid #ccc"
-            borderRight="1px solid #ccc"
-            px="20px"
-          >
-            <Text fontSize="14px">TW</Text>
-            <Tooltip label="準備中" aria-label="A tooltip" hasArrow>
-              <Text fontSize="14px" color="grey.500">
-                WORLD
-              </Text>
-            </Tooltip>
-          </HStack>
-          <HStack>
-            <Panel industry={industry} handleClickMenu={handleClickMenu} />
+        <Flex justify="center" align="center" flex="1">
+          <HStack spacing="32px">
+            <HStack>
+              <Text>產業分類 : </Text>
+              <Panel industry={industry} handleClickMenu={handleClickMenu} />
+            </HStack>
             <FormControl display="flex" w="auto" pr="20px" alignItems="center">
               <FormLabel htmlFor="detail" mb="0" color="#7B7B7B">
                 Show Detail
@@ -116,7 +104,7 @@ const Filter = ({ industry, handleClickMenu }) => {
                 isChecked={isShowDetail}
               />
             </FormControl>
-            <FormControl display="flex" w="auto" pr="20px" alignItems="center">
+            {/* <FormControl display="flex" w="auto" pr="20px" alignItems="center">
               <FormLabel htmlFor="detail" mb="0" color="#7B7B7B">
                 Show Tech / Design
               </FormLabel>
@@ -125,17 +113,9 @@ const Filter = ({ industry, handleClickMenu }) => {
                 id="detail"
                 isChecked={isShowTech}
               />
-            </FormControl>
+            </FormControl> */}
           </HStack>
         </Flex>
-
-        <HStack px="10px">
-          <Tooltip label="準備中" aria-label="A tooltip" hasArrow>
-            <Text fontSize="14px" color="grey.500">
-              設置/分類
-            </Text>
-          </Tooltip>
-        </HStack>
       </Flex>
     </>
   );
