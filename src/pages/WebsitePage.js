@@ -7,12 +7,14 @@ import {
   MenuList,
   MenuItem,
   Button,
+  Text,
 } from '@chakra-ui/react';
 
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 import Filter from 'components/Filter';
 import WebsiteList from 'components/WebsiteList';
+import WebpageSkeleton from 'components/skeleton/WebpageSkeleton';
 
 import { useResourceService } from 'service';
 
@@ -40,11 +42,14 @@ export function WebsitePage() {
   const [data, setData] = useState(null); //data
   const [industry, setIndustry] = useState(null); //data
   const { getWebsiteResource, getWebsiteResourceFilter } = useResourceService();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const data = await getWebsiteResource();
       setData(data);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
@@ -69,6 +74,7 @@ export function WebsitePage() {
   return (
     <Flex w="100%" direction="column">
       <Filter industry={industry} handleClickMenu={handleClickMenu} />
+      {isLoading && <WebpageSkeleton />}
       {/* <Panel industry={industry} handleClick={handleClickMenu} /> */}
       {data && <WebsiteList data={data} />}
     </Flex>

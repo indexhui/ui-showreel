@@ -17,13 +17,13 @@ const BookCard = props => {
   const { url: avatar } = useImageBuilder(authors[0].image);
   return (
     <Flex
-      bgColor="white"
-      color="gray.800"
       w="100%"
-      rounded="md"
-      overflow="hidden"
       p="16px"
       direction="column"
+      bgColor="white"
+      color="gray.800"
+      rounded="md"
+      overflow="hidden"
     >
       <Flex>
         <Image

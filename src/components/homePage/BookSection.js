@@ -14,7 +14,7 @@ import {
 
 import { useResourceService } from 'service';
 import useImageBuilder from 'hooks/useImageBuilder';
-
+import BookSkeleton from 'components/skeleton/BookSkeleton';
 import { Container } from 'components/layouts';
 
 const BookCard = props => {
@@ -102,6 +102,7 @@ const BookCard = props => {
 
 const BookSection = () => {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState();
   const { getBook } = useResourceService();
 
   const type = 'book';
@@ -118,8 +119,10 @@ const BookSection = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const data = await getBook(method);
       setData(data);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
@@ -135,6 +138,8 @@ const BookSection = () => {
       <Text textStyle="text2">
         你是剛對 UIUX 產生興趣的夥伴嗎? 想從書中學習嗎? 從這邊的推薦挑選一本吧 ~
       </Text>
+      {isLoading && <BookSkeleton amount={3} />}
+
       <SimpleGrid
         w="100%"
         columns={{ base: 1, lg: 3 }}
