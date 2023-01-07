@@ -16,20 +16,6 @@ import {
 import WebContext from 'store/WebContext';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
-const FilterDrawer = () => {
-  return (
-    <Flex
-      display={{ base: 'none', lg: 'flex' }}
-      position="fixed"
-      w="101px"
-      left="0"
-      top="123px"
-      h="calc(100vh - 50px)"
-      borderRight="1px solid #ccc"
-    ></Flex>
-  );
-};
-
 const Panel = ({ industry, handleClickMenu }) => {
   return (
     <Menu>
@@ -46,16 +32,30 @@ const Panel = ({ industry, handleClickMenu }) => {
         as={Button}
         rightIcon={<ChevronDownIcon />}
       >
-        {industry ? industry : 'All'}
+        {industry ? industry : '全部'}
       </MenuButton>
       <MenuList>
-        <MenuItem onClick={() => handleClickMenu(null)}>all</MenuItem>
-        <MenuItem onClick={() => handleClickMenu('design/art')}>
-          design/art
+        <MenuItem onClick={() => handleClickMenu(null)}>全部</MenuItem>
+        <MenuItem onClick={() => handleClickMenu('設計/藝術')}>
+          設計/藝術
         </MenuItem>
-        <MenuItem onClick={() => handleClickMenu('nft')}>nft</MenuItem>
-        <MenuItem onClick={() => handleClickMenu('restaurant/food')}>
-          restaurant/food
+        <MenuItem onClick={() => handleClickMenu('建築')}>建築</MenuItem>
+        <MenuItem onClick={() => handleClickMenu('企業網站')}>
+          企業網站
+        </MenuItem>
+        <MenuItem onClick={() => handleClickMenu('餐飲/食物')}>
+          餐飲/食物
+        </MenuItem>
+        <MenuItem onClick={() => handleClickMenu('旅行')}>旅行</MenuItem>
+        <MenuItem onClick={() => handleClickMenu('學校/教育')}>
+          學校/教育
+        </MenuItem>
+        {/* <MenuItem onClick={() => handleClickMenu('運動')}>運動</MenuItem> */}
+        <MenuItem onClick={() => handleClickMenu('NFT')}>NFT</MenuItem>
+        <MenuItem onClick={() => handleClickMenu('電影')}>電影</MenuItem>
+        <MenuItem onClick={() => handleClickMenu('音樂')}>音樂</MenuItem>
+        <MenuItem onClick={() => handleClickMenu('運輸/交通')}>
+          運輸/交通
         </MenuItem>
       </MenuList>
     </Menu>
@@ -70,9 +70,9 @@ const Filter = ({ industry, handleClickMenu }) => {
     toggleDetail();
   };
 
-  const handleToggleTech = () => {
-    toggleTech();
-  };
+  // const handleToggleTech = () => {
+  //   toggleTech();
+  // };
 
   return (
     <>

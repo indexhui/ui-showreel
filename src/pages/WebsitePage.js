@@ -7,7 +7,6 @@ import {
   MenuList,
   MenuItem,
   Button,
-  Text,
 } from '@chakra-ui/react';
 
 import { ChevronDownIcon } from '@chakra-ui/icons';
@@ -17,26 +16,6 @@ import WebsiteList from 'components/WebsiteList';
 import WebpageSkeleton from 'components/skeleton/WebpageSkeleton';
 
 import { useResourceService } from 'service';
-
-const Panel = ({ industry, handleClick }) => {
-  return (
-    <Menu>
-      <MenuButton w="250px" as={Button} rightIcon={<ChevronDownIcon />}>
-        Actions {industry}
-      </MenuButton>
-      <MenuList>
-        <MenuItem onClick={() => handleClick(null)}>all</MenuItem>
-        <MenuItem onClick={() => handleClick('design/art')}>
-          design/art
-        </MenuItem>
-        <MenuItem>Create a Copy</MenuItem>
-        <MenuItem>Mark as Draft</MenuItem>
-        <MenuItem>Delete</MenuItem>
-        <MenuItem>Attend a Workshop</MenuItem>
-      </MenuList>
-    </Menu>
-  );
-};
 
 export function WebsitePage() {
   const [data, setData] = useState(null); //data

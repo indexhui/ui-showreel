@@ -21,7 +21,7 @@ const webSiteContent = `name,
 export function useResourceService() {
   return {
     getResource: async method => {
-      return sanityPureFetcher(method);
+      return methodFetcher(method);
     },
     /**
      * Get all users

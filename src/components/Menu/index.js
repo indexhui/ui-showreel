@@ -15,6 +15,7 @@ const Menu = () => {
   const { scrollYProgress } = useViewportScroll();
   const [degree, setDegree] = useState(0);
   const location = useLocation();
+  console.log(location);
   const matchResource = location.pathname.split('/')[1] === 'resource';
   const isMatchResource = matchResource;
 
@@ -57,24 +58,22 @@ const Menu = () => {
               網頁靈感收集
             </Text>
           </RouterLink>
-          <RouterLink to="/resource">
+          <RouterLink to="/resource/books">
             <Text
-              color={
-                location.pathname === '/resource' ? 'gray.700' : 'gray.500'
-              }
-              fontWeight={location.pathname === '/resource' ? '500' : '300'}
+              color={isMatchResource ? 'gray.700' : 'gray.500'}
+              fontWeight={isMatchResource ? '500' : '300'}
             >
               UIUX 學習資源
             </Text>
           </RouterLink>
-          <RouterLink to="/book">
+          {/* <RouterLink to="/book">
             <Text
               color={location.pathname === '/book' ? 'gray.700' : 'gray.500'}
               fontWeight={location.pathname === '/book' ? '500' : '300'}
             >
               書單推薦
             </Text>
-          </RouterLink>
+          </RouterLink> */}
         </HStack>
       </Flex>
       <Flex as={RouterLink} to="/" w="170px">

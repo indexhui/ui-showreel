@@ -9,6 +9,7 @@ import textStyles from 'theme/textStyles';
 import semanticTokens from 'theme/semanticTokens';
 import Button from './components/button';
 import Modal from './components/modal';
+import Link from './components/link';
 
 const customTheme = {
   colors,
@@ -28,8 +29,8 @@ const customTheme = {
   components: {
     Button,
     Modal,
+    Link,
   },
-
 };
 
 const theme = extendTheme(

@@ -19,7 +19,7 @@ export async function methodFetcher(method) {
 }
 
 export async function sanityFetcher(type, content) {
-  const method = `*[_type == "${type}"] | order(_createdAt desc){
+  const method = `*[_type == "${type}"] | order(_updatedAt desc){
       ${content}
     }
     `;
@@ -28,7 +28,7 @@ export async function sanityFetcher(type, content) {
 }
 
 export async function sanityParamsFetcher(type, content, keyword) {
-  const method = `*[_type == "${type}" && ($keyword in industry[] -> name )] | order(priority desc, _updatedAt desc) {
+  const method = `*[_type == "${type}" && ($keyword in industry[] -> nameCN )] | order(priority desc, _updatedAt desc) {
       ${content}
     }
     `;

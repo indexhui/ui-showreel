@@ -12,6 +12,11 @@ import {
   Sanity,
   DesignSystemPage,
 } from 'pages';
+import Resource from 'pages/Resource';
+import Creators from 'pages/Resource/Creators';
+import Books from 'pages/Resource/Books';
+import Uiux from 'pages/Resource/Uiux';
+import Portfolio from 'pages/Resource/Portfolio';
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -24,10 +29,16 @@ const Wrapper = ({ children }) => {
 const Router = () => {
   const location = useLocation();
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence>
       <Wrapper>
         <Routes location={location} key={location.pathname}>
-          <Route path="/resource" element={<ResourcePage />}>
+          <Route path="/resource" element={<Resource />}>
+            <Route path="creators" element={<Creators />} />
+            <Route path="books" element={<Books />} />
+            <Route path="uiux" element={<Uiux />} />
+            <Route path="portfolio" element={<Portfolio />} />
+          </Route>
+          <Route path="/resource2" element={<ResourcePage />}>
             <Route path=":content" element={<ResourcePage />} />
           </Route>
           <Route path="/website" element={<WebsitePage />} />

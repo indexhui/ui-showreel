@@ -3,13 +3,20 @@ import sanityClient from '../client.js';
 
 const useImageBuilder = source => {
   const builder = imageUrlBuilder(sanityClient);
-  function urlFor(source) {
-    return builder.image(source);
+  if (!source) {
+    console.log('2', source);
   }
-  const url = urlFor(source).url();
-  return {
-    url,
-  };
+  if (source) {
+    console.log(source);
+    function urlFor(source) {
+      return builder.image(source);
+    }
+
+    const url = urlFor(source).url();
+    return {
+      url,
+    };
+  }
 };
 
 export default useImageBuilder;
