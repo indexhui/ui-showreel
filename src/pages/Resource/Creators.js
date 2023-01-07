@@ -56,7 +56,6 @@ export default function Creators() {
       setIsLoading(true);
       const data = await getResource(filterMethod(tag, level));
       setData(data);
-      console.log(data);
 
       setIsLoading(false);
     };

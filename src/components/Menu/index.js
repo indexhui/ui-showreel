@@ -15,7 +15,7 @@ const Menu = () => {
   const { scrollYProgress } = useViewportScroll();
   const [degree, setDegree] = useState(0);
   const location = useLocation();
-  console.log(location);
+
   const matchResource = location.pathname.split('/')[1] === 'resource';
   const isMatchResource = matchResource;
 
