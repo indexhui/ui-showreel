@@ -12,16 +12,16 @@ const MotionImage = motion(Image);
 
 const Menu = () => {
   const scrollDirection = useScrollDirection();
-  const { scrollYProgress } = useViewportScroll();
-  const [degree, setDegree] = useState(0);
+  // const { scrollYProgress } = useViewportScroll();
+  // const [degree, setDegree] = useState(0);
   const location = useLocation();
 
   const matchResource = location.pathname.split('/')[1] === 'resource';
   const isMatchResource = matchResource;
 
-  useEffect(() => {
-    scrollYProgress.onChange(v => setDegree(v * 360));
-  }, [scrollYProgress, degree]);
+  // useEffect(() => {
+  //   scrollYProgress.onChange(v => setDegree(v * 360));
+  // }, [scrollYProgress, degree]);
 
   return (
     <Flex
@@ -55,7 +55,7 @@ const Menu = () => {
               color={location.pathname === '/website' ? 'gray.700' : 'gray.500'}
               fontWeight={location.pathname === '/website' ? '400' : '300'}
             >
-              網頁靈感收集
+              中文網站收集
             </Text>
           </RouterLink>
           <RouterLink to="/resource/books">
@@ -63,46 +63,16 @@ const Menu = () => {
               color={isMatchResource ? 'gray.700' : 'gray.500'}
               fontWeight={isMatchResource ? '500' : '300'}
             >
-              UIUX 學習資源
+              UIUX 學習
             </Text>
           </RouterLink>
-          {/* <RouterLink to="/book">
-            <Text
-              color={location.pathname === '/book' ? 'gray.700' : 'gray.500'}
-              fontWeight={location.pathname === '/book' ? '500' : '300'}
-            >
-              書單推薦
-            </Text>
-          </RouterLink> */}
         </HStack>
       </Flex>
-      <Flex as={RouterLink} to="/" w="170px">
+      <Flex as={RouterLink} to="/" w={{ base: '140px', lg: '170px' }}>
         <Image src={logo} />
       </Flex>
-      {/* <HStack display={{ base: 'none', lg: 'flex' }} spacing="20px">
-        <RouterLink
-          h={location.pathname === 'website' ? '27px' : '20px'}
-          to="/website"
-        >
-          <Text
-            fontSize={location.pathname === '/website' ? '18px' : '18px'}
-            color={location.pathname === '/website' ? 'gray.700' : 'gray.500'}
-            fontWeight={location.pathname === '/website' ? '400' : '300'}
-          >
-            網頁靈感收集
-          </Text>
-        </RouterLink>
-        <RouterLink to="/website">
-          <Text
-            fontSize={location.pathname === '/ui' ? '20px' : '18px'}
-            color={location.pathname === '/ui' ? 'gray.700' : 'gray.500'}
-            fontWeight={location.pathname === '/ui' ? '500' : '300'}
-          >
-            UIUX 學習資源
-          </Text>
-        </RouterLink>
-      </HStack> */}
-      {/* <MenuDrawer /> */}
+
+      <MenuDrawer />
     </Flex>
   );
 };
