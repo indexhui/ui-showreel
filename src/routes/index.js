@@ -17,6 +17,7 @@ import Creators from 'pages/Resource/Creators';
 import Books from 'pages/Resource/Books';
 import Uiux from 'pages/Resource/Uiux';
 import Portfolio from 'pages/Resource/Portfolio';
+import Organize from 'pages/Resource/Organize';
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -35,6 +36,7 @@ const Router = () => {
           <Route path="/resource" element={<Resource />}>
             <Route path="creators" element={<Creators />} />
             <Route path="books" element={<Books />} />
+            <Route path="organization" element={<Organize />} />
             <Route path="uiux" element={<Uiux />} />
             <Route path="portfolio" element={<Portfolio />} />
           </Route>

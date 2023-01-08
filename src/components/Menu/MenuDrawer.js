@@ -28,9 +28,10 @@ const MenuDrawer = () => {
       <HStack
         onClick={onOpen}
         border="1px solid"
-        borderColor="blue.500"
+        borderColor="gray.700"
         px="10px"
         rounded="md"
+        align="center"
       >
         <Image
           cursor="pointer"
@@ -39,7 +40,7 @@ const MenuDrawer = () => {
           src={menu}
           alt="menu"
         />
-        <Text color="blue.500">menu</Text>
+        <Text color="gray.700">menu</Text>
       </HStack>
 
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>

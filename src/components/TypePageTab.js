@@ -15,6 +15,10 @@ const TypeList = [
     route: 'creators',
   },
   {
+    name: '組織',
+    route: 'organization',
+  },
+  {
     name: 'UIUX',
     route: 'UIUX',
   },
