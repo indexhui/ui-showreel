@@ -65,7 +65,7 @@ export default function Uiux() {
         borderColor="gray.300"
       >
         <Text textStyle="heading2">合集</Text>
-        <Text textStyle="text2">收錄著海內外優修 Portfolio 的資源平台</Text>
+        <Text textStyle="text2">收錄著海內外優秀 Portfolio 的資源平台</Text>
         <SimpleGrid
           pt="20px"
           w="100%"
