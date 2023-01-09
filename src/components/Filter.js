@@ -80,7 +80,6 @@ const Filter = ({ industry, handleClickMenu }) => {
   return (
     <>
       <Flex
-        display={{ base: 'none', lg: 'flex' }}
         zIndex="1"
         bgColor="gray.100"
         top="0px"
@@ -88,18 +87,18 @@ const Filter = ({ industry, handleClickMenu }) => {
         borderBottom="1px solid #cccc"
         w="100%"
         h="55px"
-        px="100px"
+        px="10px"
         justify="center"
       >
         <Flex justify="center" align="center" flex="1">
-          <HStack spacing="32px">
+          <HStack spacing={{ base: '12px', lg: '24px' }}>
             <HStack>
               <Text>產業分類 : </Text>
               <Panel industry={industry} handleClickMenu={handleClickMenu} />
             </HStack>
             <FormControl display="flex" w="auto" pr="20px" alignItems="center">
               <FormLabel htmlFor="detail" mb="0" color="#7B7B7B">
-                Show Detail
+                Detail
               </FormLabel>
               <Switch
                 onChange={handleToggleDetail}
