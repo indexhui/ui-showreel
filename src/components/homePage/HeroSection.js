@@ -63,7 +63,7 @@ const HeroSection = () => {
           fontSize={{ base: '18px', lg: '20px' }}
           textAlign="center"
         >
-          超過 200 件設計資源 由5位設計師推選 單元性收錄
+          50 件設計資源，由四位設計師推選 單元性收錄
         </Text>
       </Flex>
       <Flex

@@ -16,7 +16,9 @@ const WebsiteSection = ({ data }) => {
         pb={{ base: '16px', lg: '2px' }}
         align="flex-start"
       >
-        <Text textStyle="heading2">網站靈感收集</Text>
+        <Text textStyle="heading2" as={RouterLink} to="/website">
+          網站靈感收集
+        </Text>
         <Text textStyle="text2" color="gray.700">
           收集中文網站設計案例
         </Text>

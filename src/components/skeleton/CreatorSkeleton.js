@@ -33,7 +33,7 @@ const CardSkeleton = () => {
 const CreatorSkeleton = props => {
   return (
     <SimpleGrid w="100%" columns={{ base: 1, lg: 3 }} spacing="32px" pt="12px">
-      {Array(...new Array(props.amount || 6)).map((item, index) => (
+      {Array(...new Array(props.amount || 3)).map((item, index) => (
         <CardSkeleton key={index} />
       ))}
     </SimpleGrid>

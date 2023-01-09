@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Flex, SimpleGrid } from '@chakra-ui/react';
+import { Flex, SimpleGrid, Text } from '@chakra-ui/react';
 
 import CreatorSkeleton from 'components/skeleton/CreatorSkeleton';
 import TagLevelFilter from 'components/TagLevelFilter';
@@ -64,6 +64,22 @@ export default function Creators() {
 
   return (
     <>
+      <Flex
+        rounded="lg"
+        bg="white"
+        w="100%"
+        p={{ base: '15px', lg: '20px' }}
+        my="10px"
+        direction="column"
+      >
+        <Text textStyle="text2" color="gray.600">
+          許多優秀的設計師在 IG等平台，整理出自己的經驗心法與設計技巧。
+        </Text>
+        <Text textStyle="text2" color="gray.600">
+          蠻多時候 UIUX
+          的知識點是零碎的，搭配自己的學習節奏，這些創作者的學習旅程會是您自學的好夥伴。
+        </Text>
+      </Flex>
       <Flex w="100%" py="12px">
         <TagLevelFilter
           tag={tag}

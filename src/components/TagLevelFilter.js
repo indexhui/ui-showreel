@@ -15,6 +15,8 @@ const DropMenu = props => {
   return (
     <Menu>
       <MenuButton
+        px={{ base: '10px', lg: '16px' }}
+        fontSize={{ base: '14px', lg: '16px' }}
         border="1px solid black"
         bg="unset"
         // bgColor={content ? 'gray.500' : 'gray.200'}

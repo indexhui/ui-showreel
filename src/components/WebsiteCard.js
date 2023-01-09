@@ -43,9 +43,9 @@ const DetailBar = props => {
       </HStack>
       {authors &&
         authors.map((author, index) => (
-          <Link key={author.name} href={author.name + index} isExternal>
-            <Text color="cyan.800">{author.name}</Text>
-          </Link>
+          <Text key={author.name} color="cyan.800">
+            {author.name}
+          </Text>
         ))}
     </MotionFlex>
   );

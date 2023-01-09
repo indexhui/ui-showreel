@@ -57,6 +57,9 @@ const Panel = ({ industry, handleClickMenu }) => {
         <MenuItem onClick={() => handleClickMenu('運輸/交通')}>
           運輸/交通
         </MenuItem>
+        <MenuItem onClick={() => handleClickMenu('醫療/健康')}>
+          醫療/健康
+        </MenuItem>
       </MenuList>
     </Menu>
   );

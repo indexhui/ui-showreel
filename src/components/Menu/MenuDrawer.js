@@ -77,7 +77,7 @@ const MenuDrawer = () => {
               </Link>
               <Link
                 onClick={onClose}
-                href="https://forms.gle/W9yVzBkGG3ADrTiG6"
+                href="https://forms.gle/ePKpemN22udpjcwt5"
                 isExternal
               >
                 我想許願

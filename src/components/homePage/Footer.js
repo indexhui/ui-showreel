@@ -24,7 +24,7 @@ const Footer = () => {
         </Link>
         <Link
           isExternal
-          href="https://docs.google.com/forms/d/e/1FAIpQLScGoxZXhP6GCBUF-jSh0tjDIteeDCOO6SkT-FdVPZ5DvHtHFw/viewform"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSe-Q8hVmnaT63pB57X9cGxcOqBlGL5xFr5U3jZSAzsffTlSFw/viewform?usp=sf_link"
         >
           <Button px="30px" border="1px solid white" bgColor="black">
             我想許願

@@ -11,6 +11,8 @@ import {
   Skeleton,
   Link,
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 
 import { useResourceService } from 'service';
 import useImageBuilder from 'hooks/useImageBuilder';
@@ -112,7 +114,7 @@ const BookSection = () => {
           url
         },
       }`;
-  const method = `*[_type == "${type}"] | order(_createdAt desc)[0..2]{
+  const method = `*[_type == "${type}"] | order(_updatedAt desc)[0..2]{
       ${content}
     }
     `;
@@ -134,7 +136,9 @@ const BookSection = () => {
       pb={{ base: '16px', lg: '24px' }}
       align="flex-start"
     >
-      <Text textStyle="heading2">書單推薦</Text>
+      <Text as={RouterLink} to="/resource/books" textStyle="heading2">
+        書單推薦
+      </Text>
       <Text textStyle="text2">
         你是剛對 UIUX 產生興趣的夥伴嗎? 想從書中學習嗎? 從這邊的推薦挑選一本吧 ~
       </Text>
@@ -150,6 +154,20 @@ const BookSection = () => {
           <BookCard key={item.name} {...item} />
         ))}
       </SimpleGrid>
+      <RouterLink to="/resource/books">
+        <HStack
+          mt="16px"
+          color="gray.600"
+          border="1px solid"
+          px="20px"
+          py="5px"
+          borderColor="gray.600"
+          rounded="full"
+        >
+          <Text>探索全部</Text>
+          <ArrowForwardIcon />
+        </HStack>
+      </RouterLink>
     </Container>
   );
 };
