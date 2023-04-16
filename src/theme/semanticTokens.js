@@ -8,7 +8,7 @@ const tokens = {
       'btn-primary-active-bg': 'blue.700',
       'modal-primary-body': 'gray.100',
       'modal-primary-header': 'white',
-      'modal-primary-footer': '#EBEBEB80',
+      'modal-primary-footer': 'gray.500',
     },
     dark: {
       'bg-default': 'gray.900',
@@ -18,7 +18,7 @@ const tokens = {
       'btn-primary-active-bg': 'blue.600',
       'modal-primary-body': 'gray.700',
       'modal-primary-header': 'gray.900',
-      'modal-primary-footer': '#2D2D2D80',
+      'modal-primary-footer': 'gray.500',
     },
   },
 };
